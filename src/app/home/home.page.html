@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Manga Tracker</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    
+    <ion-row>
+      <ion-col size="12">
+        <ion-list-header>
+          <ion-label>Trending Manhwa</ion-label>
+        </ion-list-header>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="manga-scroll-row">
+      @for (manga of trendingList; track manga.id) {
+        <ion-col size="6">
+          <ion-card>
+            <img [src]="manga.coverImage.large" [alt]="manga.title.romaji" />
+            <ion-card-header>
+              <ion-card-title>{{ manga.title.romaji }}</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      }
+      
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-list-header>
+          <ion-label>Top Rated</ion-label>
+        </ion-list-header>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="manga-scroll-row">
+      @for (manga of topRatedList; track manga.id) {
+        <ion-col size="6">
+          <ion-card>
+            <img [src]="manga.coverImage.large" [alt]="manga.title.romaji" />
+            <ion-card-header>
+              <ion-card-title>{{ manga.title.romaji }}</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      }
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

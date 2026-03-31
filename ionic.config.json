@@ -1,0 +1,7 @@
+{
+  "name": "mangaTracker",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
