@@ -12,12 +12,12 @@
         <ion-list-header>
           <ion-label>Trending Manhwa</ion-label>
         </ion-list-header>
-      </ion-col>
+      </ion-col>   
     </ion-row>
 
     <ion-row class="manga-scroll-row">
       @for (manga of trendingList; track manga.id) {
-        <ion-col size="6">
+        <ion-col (click)="goToDetails(manga.id)" class="clickable-card">
           <ion-card>
             <img [src]="manga.coverImage.large" [alt]="manga.title.romaji" />
             <ion-card-header>
@@ -26,7 +26,6 @@
           </ion-card>
         </ion-col>
       }
-      
     </ion-row>
 
     <ion-row>
@@ -39,7 +38,7 @@
 
     <ion-row class="manga-scroll-row">
       @for (manga of topRatedList; track manga.id) {
-        <ion-col size="6">
+        <ion-col (click)="goToDetails(manga.id)" class="clickable-card">    
           <ion-card>
             <img [src]="manga.coverImage.large" [alt]="manga.title.romaji" />
             <ion-card-header>
