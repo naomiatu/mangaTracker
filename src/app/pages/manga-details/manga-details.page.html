@@ -1,13 +1,108 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>manga-details</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content *ngIf="manga">
+  <div class="header-section">
+    <h1>{{ manga.title.english || manga.title.romaji }}</h1>
+    <p class="native-title">{{ manga.format }} • {{ manga.id }}</p>
+  </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">manga-details</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="main-container">
+    <div class="info-grid">
+      <div class="poster-wrapper">
+        <img [src]="manga.coverImage.large" [alt]="manga.title.romaji" />
+      </div>
+
+      <div class="stats-column">
+        <div class="stat-item">
+          <span class="label">STATUS</span>
+          <span class="value accent">{{ manga.status || 'Unknown' }}</span> 
+        </div>
+        <div class="stat-item">
+          <span class="label">TOTAL CHAPTERS</span>
+          <span class="value">{{ manga.chapters || 'Ongoing' }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="label">FORMAT</span>
+          <span class="value">{{ manga.format }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="label">COMMUNITY SCORE</span>
+          <span class="value accent">{{ manga.averageScore || 0 }}%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tracking-card">
+      <div class="tracking-header">
+        <span class="label">My Progress</span>
+        <ion-icon 
+          [name]="userProgress.isFavorite ? 'heart' : 'heart-outline'" 
+          [class.active]="userProgress.isFavorite" 
+          (click)="toggleFav()">
+        </ion-icon>
+      </div>
+
+      <div class="tracking-controls">
+        <div class="control-item">
+          <div class="counter-box">
+            <ion-button fill="clear" (click)="updateChapter(-1)">
+              <ion-icon name="remove-outline"></ion-icon>
+            </ion-button>
+            
+            <div class="input-wrapper">
+              <span class="prefix">Ch.</span>
+              <input 
+                type="number" 
+                [(ngModel)]="userProgress.currentChapter" 
+                (change)="saveToLibrary()"
+                class="chapter-input">
+              <span class="total-divider">/ {{ manga.chapters || '?' }}</span>
+            </div>
+        
+            <ion-button fill="clear" (click)="updateChapter(1)">
+              <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+
+        <div class="control-item">
+          <ion-item lines="none" class="status-item">
+            <ion-select 
+              label="LIST STATUS" 
+              label-placement="stacked" 
+              interface="action-sheet"
+              [(ngModel)]="userProgress.status"
+              (ionChange)="saveToLibrary()"
+              class="custom-select">
+              <ion-select-option value="Reading">Reading</ion-select-option>
+              <ion-select-option value="Completed">Completed</ion-select-option>
+              <ion-select-option value="Want to Read">Want to Read</ion-select-option>
+              <ion-select-option value="Dropped">Dropped</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+
+        <div class="control-item full-width">
+          <div class="range-header">
+            <span class="sub-label">SCORE</span>
+            <span class="range-value">{{ userProgress.myRating }}</span>
+          </div>
+          <ion-range 
+            min="0" max="100" 
+            [(ngModel)]="userProgress.myRating" 
+            (ionChange)="saveToLibrary()"
+            class="pastel-range">
+          </ion-range>
+        </div>
+      </div>
+    </div>
+
+    <ion-button fill="clear" size="small" (click)="refreshCache()" class="refresh-btn">
+      <ion-icon name="refresh-outline" slot="start"></ion-icon>
+      Refresh Cache
+    </ion-button>
+
+    <div class="content-section">
+      <h3>Description</h3>
+      <p [innerHTML]="manga.description || 'No description available.'"></p>
+    </div>
+  </div> 
 </ion-content>
