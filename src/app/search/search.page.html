@@ -1,0 +1,49 @@
+<ion-content>
+  <div class="search-header">
+    <ion-searchbar 
+      placeholder="Search for manga..." 
+      (ionInput)="handleSearch($event)"
+      animated="true"
+      class="custom-search">
+    </ion-searchbar>
+  </div>
+
+  <div class="genre-container">
+    <div class="chip-scroller">
+      @for (genre of genres; track genre) {
+        <ion-chip 
+          (click)="searchByGenre(genre)" 
+          [class.selected]="selectedGenre === genre">
+          <ion-label>{{ genre }}</ion-label>
+        </ion-chip>
+      }
+    </div>
+  </div>
+
+  @if (isLoading) {
+    <div class="ion-text-center ion-padding">
+      <ion-spinner name="crescent" color="primary"></ion-spinner>
+    </div>
+  } @else {
+    <div class="results-grid">
+      @for (manga of results; track manga.id) {
+        <div class="manga-glass-card" [routerLink]="['/manga-details', manga.id]">
+          
+          <img [src]="manga.coverImage.large || manga.coverImage.medium" class="card-poster" />
+          
+          @if (manga.averageScore) {
+            <span class="score-badge">{{ manga.averageScore }}%</span>
+          }
+
+          <div class="card-info">
+            <h2>{{ manga.title.english || manga.title.romaji }}</h2>
+            <p>{{ manga.genres?.[0] }} • {{ manga.format || 'Manga' }}</p>
+          </div>
+        </div>
+      } @empty {
+        <div class="empty-state">
+          <p>Search for your favorite series or browse by genre.</p>
+        </div>
+      }
+    </div>
+  }
