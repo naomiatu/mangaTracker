@@ -1,0 +1,76 @@
+<ion-content class="ion-padding">
+  <div class="discovery-hero ion-text-center">
+    <h1>Manga Discovery</h1>
+    <p>Select 3 genres or let the tracker decide for you.</p>
+    
+    <div class="slot-machine-container">
+      <div class="genre-slots">
+        @for (g of selectedGenres; track g) {
+          <ion-badge color="secondary" class="slot-animation">
+            {{ g }}
+          </ion-badge>
+        }
+      </div>
+      
+      <div class="action-row">
+        <ion-button (click)="rollDiscovery()" class="roll-button" fill="outline">
+          <ion-icon slot="start" name="dice-outline"></ion-icon>
+          ROLL FOR MANGA
+        </ion-button>
+
+        @if (selectedGenres.length > 0 || results.length > 0) {
+          <ion-button fill="clear" color="medium" size="small" (click)="clearAll()" class="clear-btn">
+            <ion-icon slot="start" name="trash-outline"></ion-icon>
+            Clear
+          </ion-button>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="chip-container">
+    @for (g of genres; track g) {
+      <ion-chip 
+        [class.selected]="selectedGenres.includes(g)"
+        (click)="toggleGenre(g)">
+        <ion-label>{{ g }}</ion-label>
+      </ion-chip>
+    }
+  </div>
+
+  @if (isLoading) {
+    <div class="ion-text-center ion-padding">
+      <ion-spinner name="crescent" color="primary"></ion-spinner>
+      <p>Finding the best matches...</p>
+    </div>
+  } @else {
+    @if (results.length > 0) {
+      <div class="focal-discovery-container">
+        @for (manga of results; track manga.id) {
+          <div 
+            class="manga-glass-card" 
+            [class.featured-match]="$index === 0"
+            [routerLink]="['/manga-details', manga.id]">
+            
+            @if ($index === 0) {
+              <div class="match-rank">TOP MATCH</div>
+            }
+            
+            <img [src]="manga.coverImage.large" class="card-poster" alt="manga cover" />
+            
+            <div class="card-info">
+              <h2>{{ manga.title.romaji }}</h2>
+              <p>{{ manga.averageScore }}% Match</p>
+            </div>
+          </div>
+        }
+      </div>
+    } @else {
+      @if (selectedGenres.length === 3) {
+        <div class="empty-state ion-text-center ion-padding">
+          <p>No matches found for this combination.</p>
+        </div>
+      }
+    }
+  }
+</ion-content>

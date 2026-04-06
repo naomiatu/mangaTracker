@@ -10,22 +10,26 @@ export class MangaService {
   private http = inject(HttpClient);
   private storage = inject(Storage);
   private readonly url = 'https://graphql.anilist.co';
+  private storageReady: Promise<void>;
+
 
   constructor() {
-    this.init();
+    this.storageReady = this.init();
   }
 
   async init() {
-    await this.storage.create();
-  }
+    const storage = await this.storage.create();
+    this.storage = storage;
+    }
 
   async getLibrary() {
-    await this.storage.create();
-    return await this.storage.get('my_manga_library');
-  }
+    await this.storageReady;
+    const data = await this.storage.get('my_manga_library');
+    return data || {}; 
+    }
 
   async saveToLibrary(library: any) {
-    await this.storage.create();
+    await this.storageReady;
     return await this.storage.set('my_manga_library', library);
   }
 
@@ -115,6 +119,31 @@ export class MangaService {
     `;
     return this.http.post(this.url, { query, variables: { search: searchTerm } }).pipe(
       map((res: any) => res.data.Page.media)
+    );
+  }
+  getMangaByMultipleGenres(genres: string[]): Observable<any[]> {
+    const query = `
+      query ($genres: [String]) {
+        Page(perPage: 20) {
+          media(genre_in: $genres, type: MANGA, isAdult: false, sort: SCORE_DESC) {
+            id
+            title { romaji english }
+            coverImage { large }
+            averageScore
+            status
+            chapters
+            genres
+          }
+        }
+      }
+    `;
+    return this.http.post(this.url, { query, variables: { genres } }).pipe(
+      map((res: any) => {
+        const results = res.data.Page.media;
+        return results.filter((manga: any) => 
+          genres.every(genre => manga.genres.includes(genre))
+        );
+      })
     );
   }
 }

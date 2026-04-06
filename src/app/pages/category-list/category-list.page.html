@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ categoryTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      @for (manga of mangaList; track manga.id) {
+        <ion-col size="6" size-md="4" size-lg="3">
+          <div class="manga-card" [routerLink]="['/manga-details', manga.id || manga.mangaId]">
+            <img [src]="manga.coverImage?.large || manga.image" />
+            <div class="card-overlay">
+              <p class="manga-title">{{ manga.title?.romaji || manga.title }}</p>
+            </div>
+          </div>
+        </ion-col>
+      }
+    </ion-row>
+  </ion-grid>
+</ion-content>

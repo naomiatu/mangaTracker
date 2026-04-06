@@ -1,25 +1,26 @@
 ion-content {
-    --background: #121212; 
-    color: white;
+    --background: var(--app-bg);
+    color: var(--app-text-main);
   }
   
   .header-section {
     padding: 40px 20px 20px;
-    background: linear-gradient(to bottom, #252525, #121212);
+    background: linear-gradient(to bottom, rgba(var(--manga-pastel-green-rgb), 0.1), var(--app-bg));
     
-    h1 {
+    h1 { 
       margin: 0;
-      font-size: 2rem;
-      font-weight: 800;
-      color: white;
+      font-size: 1.8rem; 
+      font-weight: 800; 
+      color: var(--app-text-main); 
     }
     
-    .native-title {
+    .native-title { 
       color: var(--manga-pastel-green); 
-      font-size: 0.9rem;
-      margin-top: 5px;
+      font-size: 0.85rem; 
+      margin-top: 5px; 
       text-transform: uppercase;
       letter-spacing: 1px;
+      font-weight: 600;
     }
   }
   
@@ -32,211 +33,155 @@ ion-content {
     gap: 20px;
     align-items: flex-start;
     margin-bottom: 20px;
-  }
   
-  .poster-wrapper {
-    flex: 0 0 120px; 
-    img {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-      display: block; 
+    .poster-wrapper {
+      flex: 0 0 130px; 
+      img {
+        width: 100%;
+        border-radius: 12px;
+        border: 1px solid var(--app-border);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        display: block; 
+      }
     }
   }
   
   .stats-column {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    padding-top: 10px;
-  }
-  
-  .stat-item {
-    display: flex;
-    flex-direction: column; 
-    
-    .label {
-      font-size: 0.7rem;
-      color: #888;
-      font-weight: bold;
-      margin-bottom: 2px;
-    }
-    
-    .value {
-      font-size: 1rem;
-      color: white;
-    }
-    
-    .accent {
-      color: var(--manga-pastel-green);
-      font-weight: bold;
-      text-transform: capitalize;
-    }
-  }
-  
-  .main-action-btn {
-      --background: var(--manga-pastel-green);
-      --color: #121212;
-      --border-radius: 12px;
-      margin: 20px 0;
-      height: 50px;
-      font-weight: bold;
-  }
-
-  .status-list {
-    background: transparent;
-    padding: 0;
-  }
-  
-  .status-item {
-    --background: #2a2a2a;
-    --color: white;
-    --padding-start: 10px;
-    --border-radius: 8px;
-    border-left: 3px solid var(--manga-pastel-green);
-    margin: 0;
-    min-height: 55px;
-  }
-  
-  .custom-select {
-    --placeholder-color: #888;
-    --placeholder-opacity: 1;
-    font-size: 0.9rem;
-    
-    &::part(label) {
-      color: var(--manga-pastel-green);
-      font-size: 0.7rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-  }
-
-.tracking-card {
-    background: var(--manga-surface); 
-    border-radius: 16px;
-    padding: 16px;
-    margin: 20px 0;
-    border: 1px solid var(--manga-border);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  }
-  
-  .tracking-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    
-    .label { 
-      font-weight: 700; 
-      color: var(--manga-pastel-green); 
-      font-size: 0.75rem; 
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-  }
-  
-  .tracking-controls {
-    display: flex;
-    flex-direction: column;
     gap: 12px;
-  }
+    padding-top: 5px;
   
-  .counter-box {
-    display: flex;
-    align-items: center;
-    background: #262626;
-    border-radius: 12px;
-    padding: 4px;
-    justify-content: space-between;
-    border: 1px solid #3a3a3a;
-  
-    ion-button { 
-      --color: var(--manga-pastel-green);
-      margin: 0;
-      height: 36px;
-    }
-  
-    .count { 
-      font-weight: 600; 
-      font-size: 1rem;
-      color: white;
-    }
-  }
-  
-  .status-item {
-    --background: #262626;
-    --color: white;
-    --padding-start: 12px;
-    --border-radius: 12px;
-    border: 1px solid #3a3a3a;
-    margin: 0;
-    
-    .custom-select {
-      font-size: 0.9rem;
-      &::part(label) {
-        color: #888;
+    .stat-item {
+      display: flex;
+      flex-direction: column; 
+      
+      .label {
         font-size: 0.65rem;
+        color: var(--app-text-muted);
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      
+      .value {
+        font-size: 1rem;
+        color: var(--app-text-main);
+      }
+      
+      .accent-green {
+        color: var(--manga-pastel-green) !important;
+        font-weight: 700;
       }
     }
   }
   
-  .pastel-range {
-    --bar-background: #333;
-    --bar-background-active: var(--manga-pastel-green);
-    --knob-background: var(--manga-pastel-green);
-    --knob-size: 18px;
-    padding-top: 0;
-    padding-bottom: 0;
+  .glass-card {
+    background: var(--app-glass);
+    border: 1px solid var(--app-border);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 24px 0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  
+    .tracking-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      
+      h3 { 
+        margin: 0; 
+        font-size: 0.9rem; 
+        font-weight: 700; 
+        color: var(--manga-pastel-green); 
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+    }
   }
   
+  /* --- Fixed Counter Box --- */
   .counter-box {
     display: flex;
     align-items: center;
-    background: #2a2a2a;
-    border-radius: 10px;
+    background: var(--app-surface) !important; 
+    border-radius: 14px;
+    padding: 4px;
     justify-content: space-between;
-    ion-button { --color: var(--manga-pastel-green); }
-    .count { font-weight: bold; font-size: 1.1rem; }
+    border: 1px solid var(--app-border) !important; 
+    margin-bottom: 12px;
+  
+    ion-button { 
+      --color: var(--manga-pastel-green);
+    }
+  
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+      background: transparent !important;
+  
+      .chapter-input {
+        background: transparent !important;
+        background-color: transparent !important;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        color: var(--app-text-main) !important;
+        width: 45px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 1.1rem;
+  
+        &:focus, &:active {
+          background: transparent !important;
+          outline: none !important;
+          border: none !important;
+        }
+      }
+  
+      .total-divider { 
+        color: var(--app-text-muted) !important; 
+        font-size: 0.85rem; 
+        margin-left: 4px;
+      }
+    }
   }
   
-  .pastel-range {
-    --bar-background: #333;
+  .custom-select-item {
+    --background: var(--app-surface);
+    --color: var(--app-text-main);
+    --border-radius: 14px;
+    --padding-start: 12px;
+    border: 1px solid var(--app-border);
+    margin-bottom: 12px;
+    
+    ion-select {
+      width: 100%;
+      font-weight: 500;
+    }
+  }
+  
+  ion-range {
+    --bar-background: var(--app-border);
     --bar-background-active: var(--manga-pastel-green);
     --knob-background: var(--manga-pastel-green);
     padding: 0;
   }
-
-  ion-icon {
-    font-size: 1.5rem;
-    transition: transform 0.2s;
-    &.active {
-      color: #ff4081; 
-      transform: scale(1.1);
+  
+  .description-section {
+    h3 { color: var(--app-text-main); font-size: 1.1rem; font-weight: 700; }
+    
+    .description-text {
+      color: var(--app-text-muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
+      
+      br { content: ""; display: block; margin: 12px 0; }
     }
   }
-
-  .input-wrapper {
-    display: flex;
-    align-items: center;
-    background: var(--ion-color-step-150, #2a2a2a);
-    padding: 0 12px;
-    border-radius: 8px;
   
-    .chapter-input {
-      background: transparent;
-      border: none;
-      color: white;
-      width: 40px;
-      text-align: center;
-      font-weight: bold;
-      padding: 10px 0;
-      outline: none;
-    }
-  
-    .total-divider {
-      color: #888;
-      font-size: 0.8rem;
-      margin-left: 4px;
-    }
+  .refresh-btn {
+    --color: var(--app-text-muted);
+    font-size: 0.75rem;
+    margin-top: 10px;
   }
