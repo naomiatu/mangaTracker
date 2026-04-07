@@ -1,0 +1,80 @@
+.header-md::after, .header-ios::after {
+  display: none; 
+}
+
+ion-header {
+  &.header-md::after, &.header-ios::after {
+    display: none;
+  }
+
+  ion-toolbar {
+    --background: var(--app-bg) !important;
+    --color: var(--app-text-main) !important;
+    --border-style: none;
+    
+    background: var(--app-bg) !important;
+
+    ion-title {
+      --color: var(--app-text-main) !important;
+      color: var(--app-text-main) !important;
+      font-weight: 800;
+    }
+  }
+}
+
+ion-content {
+  --background: var(--app-bg) !important;
+}
+.settings-list {
+  background: transparent;
+  padding: 10px 16px;
+
+  ion-list-header {
+    --background: transparent;
+    padding-left: 8px;
+    margin-top: 10px;
+
+    ion-label {
+      color: var(--manga-pastel-green) !important;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 0.7rem;
+    }
+  }
+}
+
+.settings-item {
+  --background: var(--app-surface);
+  --color: var(--app-text-main);
+  --border-radius: 16px;
+  --padding-start: 16px;
+  --inner-padding-end: 16px;
+  margin-bottom: 12px;
+  
+  border: 1px solid var(--app-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  
+  ion-icon {
+    color: var(--manga-pastel-green) !important;
+    font-size: 1.2rem;
+  }
+
+  .danger-icon {
+    color: #ff4961 !important;
+  }
+
+  ion-label {
+    h2 { 
+      font-weight: 700; 
+      font-size: 0.95rem; 
+      color: var(--app-text-main); 
+    }
+    
+    p { 
+      color: var(--app-text-muted); 
+      font-size: 0.8rem; 
+      margin-top: 2px;
+    }
+  }
+}

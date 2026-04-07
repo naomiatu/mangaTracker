@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full" class="ion-no-padding">
+    <ion-list-header>
+      <ion-label color="primary">Data Management</ion-label>
+    </ion-list-header>
+
+    <ion-item (click)="confirmReset('cache')" button="true" detail="false">
+      <ion-icon slot="start" name="refresh-outline" color="primary"></ion-icon>
+      <ion-label>
+        <h2>Refresh Data</h2>
+        <p>Clear temporary search results</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item (click)="confirmReset('library')" button="true" detail="false">
+      <ion-icon slot="start" name="trash-outline" color="danger"></ion-icon>
+      <ion-label>
+        <h2 color="danger">Reset Library</h2>
+        <p>Delete all favorites and progress</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-list-header>
+      <ion-label color="primary">About</ion-label>
+    </ion-list-header>
+
+    <ion-item lines="none">
+      <ion-icon slot="start" name="information-circle-outline"></ion-icon>
+      <ion-label>
+        <h2>MangaTracker </h2>
+        <p>2026 FrontEnd Project</p>
+        <p>developed by naomi ige</p>
+
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -60,9 +60,7 @@ export class MangaDetailsPage implements OnInit {
     library[this.manga.id] = {
       ...this.userProgress, 
       mangaId: this.manga.id,
-      title: this.manga.title?.romaji || this.manga.title?.english || this.manga.title,
-      image: this.manga.coverImage?.large || this.manga.image,
-      status: this.manga.status,
+      title: this.manga.title?.romaji || this.manga.title?.english || this.manga.title,      image: this.manga.coverImage?.large || this.manga.image,
       chapters: this.manga.chapters,
       lastUpdated: new Date().toISOString()
     };
