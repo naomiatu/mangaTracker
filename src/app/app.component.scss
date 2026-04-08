@@ -1,0 +1,12 @@
+.clickable-title {
+    cursor: pointer;
+    --color: inherit; 
+    user-select: none; 
+    -webkit-user-select: none;
+    text-align: center;
+
+  }
+  .accent-text {
+    color: var(--ion-color-primary);
+    font-weight: bold;
+  }

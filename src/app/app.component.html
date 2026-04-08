@@ -1,3 +1,71 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>MangaTracker</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item routerLink="/home" lines="none" detail="false">
+            <ion-icon slot="start" name="home-outline"></ion-icon>
+            <ion-label>Home</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="false">
+          <ion-item routerLink="/search" lines="none" detail="false">
+            <ion-icon slot="start" name="search-outline"></ion-icon>
+            <ion-label>Search Manga</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="false">
+          <ion-item routerLink="/discovery" lines="none" detail="false">
+            <ion-icon slot="start" name="compass-outline"></ion-icon>
+            <ion-label>Discovery</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="false">
+          <ion-item routerLink="/settings" lines="none" detail="false">
+            <ion-icon slot="start" name="settings-outline"></ion-icon>
+            <ion-label>Settings</ion-label>
+          </ion-item>
+        </ion-menu-toggle> 
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+  
+        <ion-title routerLink="/home" class="clickable-title">
+          Manga<span class="accent-text">Tracker</span>
+        </ion-title>
+  
+        <ion-buttons slot="end">
+          <ion-button (click)="themeService.toggleTheme()">
+            @if (themeService.isDarkMode()) {
+              <ion-icon slot="icon-only" name="moon-outline"></ion-icon>
+            } @else {
+              <ion-icon slot="icon-only" name="sunny-outline"></ion-icon>
+            }
+          </ion-button>
+  
+          <ion-button routerLink="/search">
+            <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-router-outlet></ion-router-outlet>
+  </div>
 </ion-app>
