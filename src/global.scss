@@ -34,4 +34,108 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+// @import '@ionic/angular/css/palettes/dark.system.css';
+/* --- GLOBAL THEME VARIABLES --- */
+/* --- GLOBAL THEME VARIABLES --- */
+
+
+/* Core Ionic Imports */
+@import "@ionic/angular/css/core.css";
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/* --- GLOBAL THEME VARIABLES --- */
+:root {
+    --manga-pastel-green: #2ecc71;
+    --app-bg: #121212;
+    --app-surface: #1e1e1e;
+    --app-border: rgba(255, 255, 255, 0.08);
+    --app-text-main: #ffffff;
+    --app-text-muted: #888888;
+
+    /* Base Ionic Mapping */
+    --ion-background-color: var(--app-bg);
+    --ion-text-color: var(--app-text-main);
+}
+  
+.light-theme {
+    --app-bg: #ffffff;
+    --app-surface: #f4f4f4;
+    --app-border: rgba(0, 0, 0, 0.1);
+    --app-text-main: #121212;
+    --app-text-muted: #666666;
+  
+    /* Update Ionic Mapping for Light Mode */
+    --ion-background-color: #ffffff;
+    --ion-text-color: #121212;
+    --ion-item-background: #f4f4f4;
+    --ion-toolbar-background: #ffffff;
+}
+
+/* --- THE UNIVERSAL HEADER FIX --- */
+ion-header {
+    background: var(--app-bg) !important;
+    --background: var(--app-bg) !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid var(--app-border) !important;
+    
+    ion-toolbar {
+        --background: transparent !important;
+        --color: var(--app-text-main) !important;
+        &::part(background) {
+            background: var(--app-bg) !important;
+        }
+    }
+}
+
+ion-title {
+    color: var(--app-text-main) !important;
+    --color: var(--app-text-main) !important;
+}
+
+/* --- COMPONENT STYLES --- */
+ion-content {
+    --background: var(--app-bg) !important;
+    --color: var(--app-text-main) !important;
+}
+
+/* Settings Items & Labels Fix */
+.settings-item {
+    --background: var(--app-surface) !important;
+    --color: var(--app-text-main) !important;
+    --ion-item-background: var(--app-surface) !important;
+    --ion-item-color: var(--app-text-main) !important;
+    border: 1px solid var(--app-border) !important;
+    border-radius: 12px;
+    margin-bottom: 8px;
+
+    ion-label {
+        --color: var(--app-text-main) !important;
+        color: var(--app-text-main) !important;
+        
+        h2 { color: var(--app-text-main) !important; }
+        p { color: var(--app-text-muted) !important; }
+    }
+
+    ion-icon {
+        color: var(--manga-pastel-green) !important;
+    }
+}
+
+ion-list-header ion-label {
+    color: var(--manga-pastel-green) !important;
+    --color: var(--manga-pastel-green) !important;
+}
+
+.light-theme p, .light-theme h1, .light-theme h2, .light-theme h3, .light-theme ion-label {
+    color: #121212 !important;
+}
+
+.accent-text { color: var(--manga-pastel-green) !important; }

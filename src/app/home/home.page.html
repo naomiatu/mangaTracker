@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true">
-  <ion-grid class="home-grid">
-    
+  <ion-grid class="home-grid" style="padding-top: 30px;">
+        
     @for (shelf of homeShelves; track shelf.title) {
       @if (shelf.data && shelf.data.length > 0) {
         
@@ -26,6 +26,12 @@
                     [alt]="manga.title?.romaji || manga.title" 
                     loading="lazy" 
                   />
+                  <div class="quick-fav-btn" (click)="toggleQuickFav($event, manga)">
+                    <ion-icon 
+                      [name]="isMangaFavorite(manga.id || manga.mangaId) ? 'heart' : 'heart-outline'"
+                      [class.is-fav]="isMangaFavorite(manga.id || manga.mangaId)">
+                    </ion-icon>
+                  </div>
                   
                   <div class="info-badges">
                     @if (manga.chapters) {

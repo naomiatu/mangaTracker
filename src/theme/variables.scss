@@ -1,2 +1,34 @@
-// For information on how to create your own theme, please refer to:
-// https://ionicframework.com/docs/theming/
+:root {
+    --manga-pastel-green: #b2dfdb; 
+    --manga-dark-bg: #121212;
+    --manga-surface: #1e1e1e;   
+    --manga-border: #333333;
+  }
+  ion-content {
+    --background: var(--manga-dark-bg);
+  }
+  
+  .accent {
+    color: var(--manga-pastel-green);
+  }
+
+  .manga-logo {
+    font-weight: 800;
+    letter-spacing: -1px;
+    span {
+      color: var(--manga-pastel-green);
+      margin-left: 2px;
+    }
+  }
+  
+  ion-toolbar {
+    --background: #121212;
+    --border-style: none;
+  }
+  
+  ion-button {
+    --color: #888;
+    &.router-link-active {
+      --color: var(--manga-pastel-green);
+    }
+  }
